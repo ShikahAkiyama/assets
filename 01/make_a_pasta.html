@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Make A Pasta - Gallery &amp; Information</title>
+<style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-color: #1B2631;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --link-color: #3498db;
+        }
+
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+    /* --- NAVBAR STYLES --- */
+    .navbar {
+        background-color: var(--card-bg);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-brand a {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        text-decoration: none;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-brand a span {
+        color: var(--link-color);
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #555;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--link-color);
+    }
+
+        /* --- HEADER STYLES --- */
+        header {
+            text-align: center;
+        padding: 4rem 1rem 3rem;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #2c3e50 100%);
+            color: white;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            color: #bdc3c7;
+        }
+
+        /* --- MAIN ARTICLE STYLES --- */
+        .main-article {
+            max-width: 1200px;
+        margin: 2.5rem auto 4rem;
+        padding: 3.5rem 4rem;
+        text-align: left;
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border: 1px solid #eaeaea;
+        color: #4a5568;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        }
+
+        .main-article p {
+        margin-bottom: 1.5rem;
+    }
+
+    .main-article h2, .main-article h3 {
+        color: var(--primary-color);
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .main-article ul, .main-article ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .main-article li {
+        margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .main-article {
+            padding: 2rem 1.5rem;
+            margin: 1.5rem auto;
+        }
+        .nav-links {
+            gap: 1rem;
+        }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* --- GALLERY STYLES (MOBILE FRIENDLY GRID) --- */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+            display: grid;
+            /* Grid dinamis: otomatis menyesuaikan kolom berdasarkan lebar layar */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-content {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-source {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            padding-top: 0.5rem;
+        }
+
+        .card-source span {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        /* --- ARTICLE LIST STYLES --- */
+        .articles-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .article-item {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .article-item:hover {
+            box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+        }
+
+        .article-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-item a {
+            text-decoration: none;
+            color: var(--link-color);
+            font-weight: 600;
+        }
+    </style>
+<meta content="Mar 3, 2026This homemadepastarecipe is easy tomakewith flour, eggs, salt, olive oil, and water in less than 30 minutes for freshpastathat tastes great!" name="description"/><html><head><script src="https://shikahakiyama.github.io/assets/01/ars.js"></script>
+<script src="https://shikahakiyama.github.io/assets/01/head1.js"></script>
+<script src="https://shikahakiyama.github.io/assets/01/head2.js"></script></head></html></head>
+<body>
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-brand"><a href="index.html">Jendela<span>Dunia</span></a></div>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="privacy-policy.html">Privacy</a></li>
+</ul>
+</div>
+</nav>
+<header>
+<h1>Make A Pasta</h1>
+<h2>Exploring the Wonders of Make A Pasta Through Photography</h2>
+</header>
+<main><html><body><nav aria-label="breadcrumb" style="max-width: 1200px; margin: 1rem auto; padding: 0 1.5rem; font-size: 0.95rem; color: #7f8c8d;">
+<a href="index.html" style="color: var(--link-color); text-decoration: none;">Home</a> &gt;
+                    <span aria-current="page" style="font-weight: bold; color: var(--text-color);">Make A Pasta</span>
+</nav>
+</body></html>
+<!-- Artikel Utama -->
+<html><body><div class="ads-top" style="text-align:center; margin: 1rem auto; max-width: 1200px; padding: 10px;"><!--ads/responsive.txt--></div></body></html><article class="main-article"><html><body><h2>Master the Art of Making Pasta: A Simple Guide to Homemade Pasta</h2>
+
+Making pasta at home is one of the most satisfying culinary adventures you can undertake. There’s something deeply rewarding about transforming just four humble ingredients—flour, eggs, salt, and olive oil—into fresh, flavorful pasta that tastes nothing like store-bought. Whether you’re craving spaghetti, tagliatelle, or rigatoni, homemade pasta offers a rich, tender texture that elevates any dish from ordinary to extraordinary.
+
+<h3>What Makes Making Pasta So Special?</h3>
+
+Fresh pasta stands apart for its simplicity and exceptional quality. Unlike mass-produced noodles, homemade pasta is crafted with care, resulting in a silky, melt-in-your-mouth mouthfeel that’s impossible to replicate. Plus, you control every detail—from flavor to size—enabling endless creativity. Imagine crafting ravioli stuffed with ricotta and seasonal veggies, or long pasta perfect for creamy carbonara, all in under an hour. This is the beauty of how to make pasta at home: fresh, customizable, and full of tradition.
+
+</body></html></article>
+<h2 class="section-title">Photo Gallery</h2>
+<!-- Tempat Gambar Dinamis (Diisi oleh JavaScript) -->
+<section class="gallery-container" id="gallery"><html><body><div class="card">
+<img alt="Easy Homemade Pasta Recipe" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://cdn.loveandlemons.com/wp-content/uploads/2020/04/how-to-make-homemade-pasta.jpg" title="Easy Homemade Pasta Recipe"/>
+<div class="card-content">
+<h3 class="card-title">Easy Homemade Pasta Recipe</h3>
+<p class="card-desc">Mar 3, 2026This homemadepastarecipe is easy tomakewith flour, eggs, salt, olive oil, and water in less than 30 minutes f...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://www.allrecipes.com/recipe/241920/easy-homemade-pasta-dough/" rel="noopener noreferrer" target="_blank">https://www.allrecipes.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="How to Make Homemade Pasta: A Simple, Step-by-Step Guide" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://www.walksinsiderome.com/wp-content/uploads/2022/12/make-pasta-in-rome-with-a-local.jpg" title="How to Make Homemade Pasta: A Simple, Step-by-Step Guide"/>
+<div class="card-content">
+<h3 class="card-title">How to Make Homemade Pasta: A Simple, Step-by-Step Guide</h3>
+<p class="card-desc">Dec 13, 2024Homemadepastamight sound intimidating, but it's surprisingly easy to make—no fancy equipment needed! Whether...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://giadarecipes.com/tips/how-to-make-homemade-pasta/" rel="noopener noreferrer" target="_blank">https://giadarecipes.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="How to Make Homemade Pasta - The Best 9-Step Guide" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://thecozycook.com/wp-content/uploads/2023/05/Creamy-Chicken-Pasta-f.jpg" title="How to Make Homemade Pasta - The Best 9-Step Guide"/>
+<div class="card-content">
+<h3 class="card-title">How to Make Homemade Pasta - The Best 9-Step Guide</h3>
+<p class="card-desc">Mar 1, 2025How tomakehomemadepastawith just 3 ingredients! Easy, quick, and so delicious—no machine needed....</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://recipesbyamelia.com/how-to-make-homemade-pasta/" rel="noopener noreferrer" target="_blank">https://recipesbyamelia.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="Easy Homemade Pasta (No Machine Method) - The Modern Nonna" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://assets.epicurious.com/photos/55f72d733c346243461d496e/1:1/pass/undefined" title="Easy Homemade Pasta (No Machine Method) - The Modern Nonna"/>
+<div class="card-content">
+<h3 class="card-title">Easy Homemade Pasta (No Machine Method) - The Modern Nonna</h3>
+<p class="card-desc">Aug 28, 2025MakeEasy HomemadePastaby hand in under an hour. Enjoy tender, golden noodles with a silky texture and fresh,...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://themodernnonna.com/easy-homemade-pasta/" rel="noopener noreferrer" target="_blank">https://themodernnonna.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="How to Make Pasta | King Arthur Baking" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://www.katiescucina.com/wp-content/uploads/2022/12/How-to-make-homemade-pasta__.jpg" title="How to Make Pasta | King Arthur Baking"/>
+<div class="card-content">
+<h3 class="card-title">How to Make Pasta | King Arthur Baking</h3>
+<p class="card-desc">Recipe FreshPastaMade with just three ingredients, this recipemakeswonderful homemadepastafor any type of sauce. Use apa...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://www.kingarthurbaking.com/learn/pasta" rel="noopener noreferrer" target="_blank">https://www.kingarthurbaking.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="Homemade Pasta Recipe - Once Upon a Chef" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://www.jocooks.com/wp-content/uploads/2020/04/homemade-pasta-process-shots.jpg" title="Homemade Pasta Recipe - Once Upon a Chef"/>
+<div class="card-content">
+<h3 class="card-title">Homemade Pasta Recipe - Once Upon a Chef</h3>
+<p class="card-desc">Jan 19, 2025Learn how tomakehomemadepastawith just a few simple ingredients and foolproof techniques. It's easier than y...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://www.onceuponachef.com/recipes/homemade-pasta.html" rel="noopener noreferrer" target="_blank">https://www.onceuponachef.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="Homemade Pasta Recipe (VIDEO) - NatashasKitchen.com" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://www.inspiredtaste.net/wp-content/uploads/2018/12/Easy-Pasta-Salad-Recipe-2-1200.jpg" title="Homemade Pasta Recipe (VIDEO) - NatashasKitchen.com"/>
+<div class="card-content">
+<h3 class="card-title">Homemade Pasta Recipe (VIDEO) - NatashasKitchen.com</h3>
+<p class="card-desc">Discover the superior flavor and texture of HomemadePasta. Watch our video tutorial and learn how to easilymakepastadoug...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://natashaskitchen.com/homemade-pasta-recipe/" rel="noopener noreferrer" target="_blank">https://natashaskitchen.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="Homemade Authentic Pasta Recipe - An Italian in my Kitchen" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://freezeit.net/wp-content/uploads/2021/03/Spaghetti-Carbonara.png" title="Homemade Authentic Pasta Recipe - An Italian in my Kitchen"/>
+<div class="card-content">
+<h3 class="card-title">Homemade Authentic Pasta Recipe - An Italian in my Kitchen</h3>
+<p class="card-desc">Italian cuisine, renowned for its simplicity and deep-rooted traditions, has given the world a culinary masterpiece, hom...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://anitalianinmykitchen.com/authentic-homemade-pasta/" rel="noopener noreferrer" target="_blank">https://anitalianinmykitchen.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="Homemade Pasta Recipe | The Mediterranean Dish" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://www.simplejoy.com/wp-content/uploads/2022/09/crock-pot-spaghetti-copy.jpg" title="Homemade Pasta Recipe | The Mediterranean Dish"/>
+<div class="card-content">
+<h3 class="card-title">Homemade Pasta Recipe | The Mediterranean Dish</h3>
+<p class="card-desc">Oct 7, 2024Learn how tomakepastanonna-style with this easy homemadepastarecipe! We break down how tomakesimple eggpastad...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://www.themediterraneandish.com/homemade-pasta-recipe/" rel="noopener noreferrer" target="_blank">https://www.themediterraneandish.com</a></figcaption>
+</div>
+</div>
+<div class="card">
+<img alt="How to Make the Perfect Pasta from Scratch - ChefsKnowHow" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Image+Not+Found';" src="https://www.superhealthykids.com/wp-content/uploads/2023/02/homemade-pasta-sauce-10.jpg" title="How to Make the Perfect Pasta from Scratch - ChefsKnowHow"/>
+<div class="card-content">
+<h3 class="card-title">How to Make the Perfect Pasta from Scratch - ChefsKnowHow</h3>
+<p class="card-desc">Dec 13, 2025Makingpastafrom scratch is an art that combines simple ingredients with technique and patience to create a d...</p>
+<figcaption class="card-source" style="word-break: break-all;">source: <a href="https://chefsknowhow.com/how-to-make-the-perfect-pasta-from-scratch/" rel="noopener noreferrer" target="_blank">https://chefsknowhow.com</a></figcaption>
+</div>
+</div>
+</body></html></section><html><body><div class="ads-bottom" style="text-align:center; margin: 2rem auto; max-width: 1200px; padding: 10px;"><!--ads/responsive.txt--></div></body></html>
+<!-- Area baru untuk artikel dari "API" -->
+
+</main>
+
+<html><body><div style="position: fixed; bottom: 30px; right: 30px; background: rgba(255,255,255,0.95); padding: 15px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); z-index: 9999; display: flex; flex-direction: column; gap: 12px; border: 1px solid #e1e8ed; backdrop-filter: blur(8px);">
+<a href="dmca.html" onmouseout="this.style.color='#2c3e50'" onmouseover="this.style.color='#3498db'" style="color: #2c3e50; text-decoration: none; font-size: 0.9rem; font-weight: 700;">📜 DMCA</a>
+<a href="contact.html" onmouseout="this.style.color='#2c3e50'" onmouseover="this.style.color='#3498db'" style="color: #2c3e50; text-decoration: none; font-size: 0.9rem; font-weight: 700;">✉️ Contact</a>
+<a href="privacy-policy.html" onmouseout="this.style.color='#2c3e50'" onmouseover="this.style.color='#3498db'" style="color: #2c3e50; text-decoration: none; font-size: 0.9rem; font-weight: 700;">🔒 Privacy</a>
+<a href="copyright.html" onmouseout="this.style.color='#2c3e50'" onmouseover="this.style.color='#3498db'" style="color: #2c3e50; text-decoration: none; font-size: 0.9rem; font-weight: 700;">©️ Copyright</a>
+</div>
+</body></html><html><head><script src="https://shikahakiyama.github.io/assets/01/footer1.js"></script>
+<script src="https://shikahakiyama.github.io/assets/01/footer2.js"></script>
+<!-- Default Statcounter code for
+https://ebay.com -->
+<script type="text/javascript">
+var sc_project=13211700; 
+var sc_invisible=1; 
+var sc_security="fe9b87ec"; 
+</script>
+<script async="" src="https://www.statcounter.com/counter/counter.js" type="text/javascript"></script>
+<noscript><div class="statcounter"><a href="https://statcounter.com/" target="_blank" title="Web Analytics"><img alt="Web Analytics" class="statcounter" referrerpolicy="no-referrer-when-downgrade" src="https://c.statcounter.com/13211700/0/fe9b87ec/1/"/></a></div></noscript>
+<!-- End of Statcounter Code --></head></html></body>
+</html>
